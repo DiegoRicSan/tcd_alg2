@@ -29,26 +29,24 @@ int buscar(int *vet, int tam, int val) //Busca linear
     return -1;
 }
 
-int buscaBinaria(int *vet, int val) //Busca Binária
+int buscaBinaria(int *vet, int chave, int inicio, int fim) //Busca Binária
 { 
-    int esq = 0;
-    int dir = 10;
 
-    while (dir > esq)
+    while (inicio <= fim)
     {
-        int met = (esq + dir) / 2;
+        int meio = inicio + (inicio - fim) / 2;
 
-        if (val == vet[*vet+met])
+        if( vet[meio] == chave)
         {
-            return met;
+            return meio;
         }
-        if(val > vet[*vet+met])
+        else if ( vet[meio] > chave)
         {
-            esq = met + 1; 
+            fim = meio - 1;
         }
-        if(val < vet[*vet+met])
+        else
         {
-            dir = met - 1;
+            inicio = meio + 1;
         }
     }
     return -1;
