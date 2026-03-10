@@ -107,3 +107,56 @@ void insertionSort(int vet[], int tam) //Função de ordenação Insertion Sort
     }
 }
 
+void mergeSort(int vet[], int inicio, int fim) //Função de ordenação Merge Sort
+{
+    if (inicio < fim)
+    {
+        int meio;
+
+        meio = (inicio + fim) / 2;
+
+        mergeSort(vet, inicio, meio);
+        mergeSort(vet, meio + 1, fim);
+        merge(vet, inicio, meio, fim);
+    }
+}
+
+void merge(int vet[], int inicio, int meio, int fim) //Função Merge do Algoritmo Merge Sort
+{
+    int i;
+    int j;
+    int k;
+
+    i = inicio;
+    j = meio + 1;
+    k = 0;
+
+    int temp[fim - inicio + 1];
+
+    while (i <= meio && j <= fim)
+    {
+        if (vet[i] <= vet[j])
+        {
+            temp[k++] = vet[i++];
+        }
+        else
+        {
+            temp[k++] = vet[j++];
+        }
+    }
+
+    while (i <= meio)
+    {
+        temp[k++] = vet[i++];
+    }
+
+    while (j <= fim)
+    {
+        temp[k++] = vet[j++];
+    }
+
+    for (i = inicio, k = 0; i <= fim; i++, k++)
+    {
+        vet[i] = temp[k];
+    }
+}
