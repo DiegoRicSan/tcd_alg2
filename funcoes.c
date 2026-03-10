@@ -37,38 +37,57 @@ int carregarArquivo(char *nome_arquivo, int **vetor, int *total) // função par
     return 0;
 }
 
-int buscar(int *vet, int tam, int val) //Busca linear
+// Percorre o vetor elemento por elemento até encontrar a chave
+int buscaLinear (int *lista, int chave, int tam)
 {
-    for (int i = 0; i < tam; i++)
+    // Percorre todos os elementos do vetor
+    for(int i = 0; i < tam; i++)
     {
-        if (val == vet[i])
+        // Verifica se o elemento atual é igual à chave procurada
+        if(lista[i] == chave)
         {
+            // Se encontrou, retorna o índice onde o elemento está
             return i;
         }
     }
+
+    // Se terminou o laço e não encontrou a chave,
+    // retorna -1 indicando que o elemento não existe no vetor
     return -1;
 }
 
-int buscaBinaria(int *vet, int chave, int inicio, int fim) //Busca Binária
+// Procura a chave em um vetor ORDENADO dividindo o vetor ao meio a cada passo
+int buscaBinaria(int *vet, int chave, int inicio, int fim)
 { 
-
+    // Continua procurando enquanto o intervalo for válido
     while (inicio <= fim)
     {
-        int meio = inicio + (inicio - fim) / 2;
+        // Calcula o índice do elemento do meio do intervalo
+        int meio = inicio + (fim - inicio) / 2;
 
-        if( vet[meio] == chave)
+        // Verifica se o elemento do meio é a chave procurada
+        if(vet[meio] == chave)
         {
+            // Se for igual, retorna o índice onde foi encontrado
             return meio;
         }
-        else if ( vet[meio] > chave)
+
+        // Se o elemento do meio for maior que a chave
+        else if(vet[meio] > chave)
         {
+            // A chave só pode estar na metade esquerda do vetor
             fim = meio - 1;
         }
+
+        // Caso contrário, a chave está na metade direita
         else
         {
             inicio = meio + 1;
         }
     }
+
+    // Se sair do laço sem encontrar a chave,
+    // significa que ela não está no vetor
     return -1;
 }
 
