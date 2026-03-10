@@ -62,6 +62,57 @@ int main()
             break;
         case 2:
             // Abrir um submenu para buscar elemento (linear ou binaria)
+            // Declaração das variáveis
+            // chave -> número que o usuário deseja procurar
+            // resultado -> índice retornado pela função de busca
+            // opbusca -> opção escolhida pelo usuário (linear ou binária)
+            int chave, resultado, opbusca;
+
+            // Solicita ao usuário o número que será procurado no vetor
+            printf("\nDigite o numero a ser buscado: ");
+            scanf("%d",&chave);
+
+            // Pergunta qual tipo de busca o usuário deseja utilizar
+            printf("\nDigite o tipo de busca desejado: ");
+            printf("\n1-Linear\n2-Binaria\n");
+            scanf("%d",&opbusca);
+
+            // Verifica qual tipo de busca foi escolhido
+            if(opbusca == 1)
+            {
+            // Chama a função de busca linear
+            // vetor -> lista de números
+            // chave -> valor a ser buscado
+            // total -> quantidade de elementos do vetor
+                   resultado = buscaLinear(vetor, chave, total);
+            }
+            else if(opbusca == 2)
+            {
+            // Chama a função de busca binária
+            // inicio = 0 (primeira posição do vetor)
+            // fim = total - 1 (última posição do vetor)
+                   resultado = buscaBinaria(vetor, chave, 0, total - 1);
+            }
+            else
+            {
+            // Caso o usuário digite uma opção inválida
+                printf("\nOpcao selecionada nao existe, escolha entre 1 e 2");
+            break;
+            }
+
+            // Verifica se o valor foi encontrado
+            if(resultado != -1)
+            {
+            // Se o resultado for diferente de -1,
+            // significa que a chave foi encontrada
+                printf("\nO elemento %d foi encontrado no indice %d", chave, resultado);
+            }
+            else
+            {
+            // Se o resultado for -1,
+            // significa que o valor não está no vetor
+                printf("\nO elemento %d não foi encontrado", chave);
+            }
             break;
         case 3:
             // Abrir um submenu com opções para ordenar dados (Insertion, Bubble, Selection, Merge, Quick, EXTRA)
