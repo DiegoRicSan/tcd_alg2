@@ -15,7 +15,7 @@ int main()
 
     // =================================================================
 
-    int x = 0;
+    int x = 0, y = 0;
     int *vetor = (int *)malloc(1000 * sizeof(int)); // alocacao inicial do vetor
     char nome_arquivo[30];
     int total = 0;                                  // variavel para receber o tamanho do vetor
@@ -48,6 +48,7 @@ int main()
             if (carregarArquivo(nome_arquivo, &vetor, &total) == 0)
             {
                 printf("Sucesso, %d elementos carregados\n\n", total);
+                y = 1; // autoriza buscar e ordenar
             }
 
             if (vetor != NULL) // verificar se carregou certo
@@ -59,14 +60,34 @@ int main()
                 }
                 printf("\n\n");
             }
+
             break;
         case 2:
+            if (y == 0)
+            {
+                printf("Eh necessario carregar um arquivo primeiro");
+                break;
+            }
+
             // Abrir um submenu para buscar elemento (linear ou binaria)
+            y = 2; // autoriza o relatorio
             break;
         case 3:
+            if (y == 0)
+            {
+                printf("Eh necessario carregar um arquivo primeiro");
+                break;
+            }
+
             // Abrir um submenu com opções para ordenar dados (Insertion, Bubble, Selection, Merge, Quick, EXTRA)
+            y = 2; // autoriza o relatorio
             break;
         case 4:
+            if (y != 2)
+            {
+                printf("Algum algoritmo deve ser executado antes");
+            }
+            
             // Gerar relatorio (Log)
             break;
         case 5:
