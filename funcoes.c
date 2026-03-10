@@ -2,18 +2,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int carregarArquivo(char *nome_arquivo, char modo)
+int carregarArquivo(char *nome_arquivo, int **vetor, int *total) // função para carregar arquivo
 {
-    FILE *fp;
-    fp = fopen("nome_arquivo", "modo");
+    FILE *fp = fopen(nome_arquivo, "r");; // abre o arquivo 
     if (fp == NULL)
     {
-        printf("Erro na abertura do arquivo\n");
-        system("pause");
-        exit(1);
+        printf("Erro na abertura do arquivo %s\n", nome_arquivo);
+        return -1; // retorna caso ocorra algum erro
     }
-    fclose(fp);
 
+    int i = 0;
+    int tamanho = 1000; // tamanho minimo dos txt de entrada
+    while (fscanf(fp, "%d", &((*vetor)[i])) != EOF) // while para guardar os numeros no vetor
+    {
+        i++;
+        if(i >= tamanho) // verifica se o tamanho do arquivo é maior que o vetor
+        {
+            tamanho = tamanho * 10;
+            int *temp = (int*) realloc(*vetor, tamanho * sizeof(int)); // aumentar tamanho do vetor
+            if (temp != NULL)
+            {
+                *vetor = temp; // recebe o vetor realocado
+            }
+            else
+            {
+                printf("Erro ao expandir memoria\n");
+                fclose(fp);
+                return -1; // retorna caso erro
+            }
+        }
+    }
+    *total = i; // retorna para main quantos numeros foram lidos
+    fclose(fp);
     return 0;
 }
 
