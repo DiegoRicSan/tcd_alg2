@@ -2,3 +2,4 @@
 funcoesexemplo.c
 arquivos/
 *.txt
+!log.txt

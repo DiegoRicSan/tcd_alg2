@@ -18,16 +18,16 @@ int main()
     int x = 0, y = 0;
     int *vetor = (int *)malloc(1000 * sizeof(int)); // alocacao inicial do vetor
     char nome_arquivo[30];
-    int total = 0;                                  // variavel para receber o tamanho do vetor
+    int total = 0; // variavel para receber o tamanho do vetor
     do
     {
-        printf("\n\n======= MENU ========\n\n"); 
+        printf("\n\n======= MENU ========\n\n");
         printf("1. Carregar arquivo de dados\n");
         printf("2. Buscar elemento (linear ou binaria)\n");
         printf("3. Ordenar dados (Insertion, Bubble, Selection, Merge, Quick, EXTRA)\n");
         printf("4. Gerar relatorio (Log)\n");
-        printf("5. Sair\n\n"); 
-        scanf("%d", &x);       
+        printf("5. Sair\n\n");
+        scanf("%d", &x);
 
         switch (x)
         {
@@ -51,25 +51,15 @@ int main()
                 y = 1; // autoriza buscar e ordenar
             }
 
-            if (vetor != NULL) // verificar se carregou certo
-            {
-                printf("numeros lidos: ");
-                for (int i = 0; i < total; i++)
-                {
-                    printf("%d, ", vetor[i]);
-                }
-                printf("\n\n");
-            }
-
             break;
         case 2:
+            // verificar se ja carregou algum arquivo
             if (y == 0)
             {
-                printf("Eh necessario carregar um arquivo primeiro");
+                printf("Necessario carregar um arquivo primeiro");
                 break;
             }
 
-            // Abrir um submenu para buscar elemento (linear ou binaria)
             // Declaração das variáveis
             // chave -> número que o usuário deseja procurar
             // resultado -> índice retornado pela função de busca
@@ -78,52 +68,53 @@ int main()
 
             // Solicita ao usuário o número que será procurado no vetor
             printf("\nDigite o numero a ser buscado: ");
-            scanf("%d",&chave);
+            scanf("%d", &chave);
 
             // Pergunta qual tipo de busca o usuário deseja utilizar
             printf("\nDigite o tipo de busca desejado: ");
             printf("\n1-Linear\n2-Binaria\n");
-            scanf("%d",&opbusca);
+            scanf("%d", &opbusca);
 
             // Verifica qual tipo de busca foi escolhido
-            if(opbusca == 1)
+            if (opbusca == 1)
             {
-            // Chama a função de busca linear
-            // vetor -> lista de números
-            // chave -> valor a ser buscado
-            // total -> quantidade de elementos do vetor
-                   resultado = buscaLinear(vetor, chave, total);
+                // Chama a função de busca linear
+                // vetor -> lista de números
+                // chave -> valor a ser buscado
+                // total -> quantidade de elementos do vetor
+                resultado = buscaLinear(vetor, chave, total);
             }
-            else if(opbusca == 2)
+            else if (opbusca == 2)
             {
-            // Chama a função de busca binária
-            // inicio = 0 (primeira posição do vetor)
-            // fim = total - 1 (última posição do vetor)
-                   resultado = buscaBinaria(vetor, chave, 0, total - 1);
+                // Chama a função de busca binária
+                // inicio = 0 (primeira posição do vetor)
+                // fim = total - 1 (última posição do vetor)
+                resultado = buscaBinaria(vetor, chave, 0, total - 1);
             }
             else
             {
-            // Caso o usuário digite uma opção inválida
-                printf("\nOpcao selecionada nao existe, escolha entre 1 e 2");
-            break;
+                // Caso o usuário digite uma opção inválida
+                printf("\nOpcao selecionada nao existe, escolha 1 ou 2");
+                break;
             }
 
             // Verifica se o valor foi encontrado
-            if(resultado != -1)
+            if (resultado != -1)
             {
-            // Se o resultado for diferente de -1,
-            // significa que a chave foi encontrada
+                // Se o resultado for diferente de -1,
+                // significa que a chave foi encontrada
                 printf("\nO elemento %d foi encontrado no indice %d", chave, resultado);
             }
             else
             {
-            // Se o resultado for -1,
-            // significa que o valor não está no vetor
-                printf("\nO elemento %d não foi encontrado", chave);
+                // Se o resultado for -1,
+                // significa que o valor não está no vetor
+                printf("\nO elemento %d nao foi encontrado", chave);
             }
             y = 2; // autoriza o relatorio
             break;
         case 3:
+            // verificar se ja carregou algum arquivo
             if (y == 0)
             {
                 printf("Eh necessario carregar um arquivo primeiro");
@@ -134,11 +125,13 @@ int main()
             y = 2; // autoriza o relatorio
             break;
         case 4:
+            // verificar se ja rodou algum algoritmo
             if (y != 2)
             {
                 printf("Algum algoritmo deve ser executado antes");
+                break;
             }
-            
+
             // Gerar relatorio (Log)
             break;
         case 5:
