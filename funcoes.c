@@ -91,6 +91,29 @@ int buscaBinaria(int *vet, int chave, int inicio, int fim)
     return -1;
 }
 
+void bubbleSort(int vet[], int tam) //Função de ordenação Bubble Sort
+{
+
+    int troca;
+    int n;
+    n = vet[tam];
+    int i;
+    int j;
+
+    for(i = 0; i < n; i++)
+    {
+        for(j = 0; j < n - i -1; j++)
+        {
+            if(vet[j] > vet[j + 1])
+            {
+                troca = vet[j];
+                vet[j] = vet[j + 1];
+                vet[j + 1] = troca;
+            }
+        }
+    }
+}
+
 void insertionSort(int vet[], int tam) //Função de ordenação Insertion Sort
 {
     int i, j, posi;
@@ -105,6 +128,34 @@ void insertionSort(int vet[], int tam) //Função de ordenação Insertion Sort
         }
         vet[j + 1] = posi;
     }
+}
+
+void selectionSort(int vet[], int tam)//Função de ordenação Selection Sort
+{
+    int i;
+    int j;
+    int minimo;
+    int troca;
+
+    for(i = 0; i < tam - 1; i++)
+    {
+        minimo = i;
+        for(j = i + 1; j < tam; j++)
+        {
+            if(vet[j] < vet[minimo])
+            {
+                minimo = j;
+            }
+        }
+        if(minimo != i)
+        {
+            troca = vet[i];
+            vet[i] = vet[minimo];
+            vet[minimo] = troca;
+        }
+    }
+
+
 }
 
 void mergeSort(int vet[], int inicio, int fim) //Função de ordenação Merge Sort
@@ -159,4 +210,49 @@ void merge(int vet[], int inicio, int meio, int fim) //Função Merge do Algorit
     {
         vet[i] = temp[k];
     }
+}
+
+void quickSort(int vet[], int inicio, int fim) //Função de ordenação Quick Sort
+{
+    int pivo;
+    if(fim > inicio)
+    {
+        pivo = particiona(vet, inicio, fim); // Separa os dados em 2 partes
+        quickSort(vet, inicio, pivo - 1); //chama a função para a metade esquerda
+        quickSort(vet, pivo + 1, fim); //chama a função para a metade da direita
+    }
+}
+
+int particiona(int vet[], int inicio, int fim) //Função 'particiona' para o Quick Sort funcionar
+{
+    int esq;
+    int dir;
+    int pivo;
+    int troca;
+
+    esq = inicio;
+    dir = fim;
+    pivo = vet[inicio];
+
+    while(esq < dir)
+    {
+        while(vet[esq] <= pivo)
+        {
+            esq++; //avança a posição para a esquerda
+        }
+        while(vet[dir] > pivo)
+        {
+            dir--; //avança a posição para a direita
+        }
+        if(esq < dir) // troca esq e dir
+        {
+            troca =  vet[esq];
+            vet[esq] = vet[dir];
+            vet[dir] = troca;
+        }
+
+    }
+    vet[inicio] = vet[dir];
+    vet[dir] = pivo;
+    return dir;
 }
