@@ -91,6 +91,29 @@ int buscaBinaria(int *vet, int chave, int inicio, int fim)
     return -1;
 }
 
+void bubbleSort(int vet[], int tam) //Função de ordenação Bubble Sort
+{
+
+    int troca;
+    int n;
+    n = vet[tam];
+    int i;
+    int j;
+
+    for(i = 0; i < n; i++)
+    {
+        for(j = 0; j < n - i -1; j++)
+        {
+            if(vet[j] > vet[j + 1])
+            {
+                troca = vet[j];
+                vet[j] = vet[j + 1];
+                vet[j + 1] = troca;
+            }
+        }
+    }
+}
+
 void insertionSort(int vet[], int tam) //Função de ordenação Insertion Sort
 {
     int i, j, posi;
