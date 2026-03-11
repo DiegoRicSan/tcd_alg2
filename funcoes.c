@@ -230,7 +230,7 @@ int particiona(int vet[], int inicio, int fim) //Função 'particiona' para o Qu
 
     esq = inicio;
     dir = fim;
-    pivo = vet[inicio];
+    pivo = vet[(inicio + fim)/2];
 
     while(esq < dir)
     {
