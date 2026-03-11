@@ -188,3 +188,48 @@ void merge(int vet[], int inicio, int meio, int fim) //Função Merge do Algorit
         vet[i] = temp[k];
     }
 }
+
+void quickSort(int vet[], int inicio, int fim) //Função de ordenação Quick Sort
+{
+    int pivo;
+    if(fim > inicio)
+    {
+        pivo = particiona(vet, inicio, fim); // Separa os dados em 2 partes
+        quickSort(vet, inicio, pivo - 1); //chama a função para a metade esquerda
+        quickSort(vet, pivo + 1, fim); //chama a função para a metade da direita
+    }
+}
+
+int particiona(int vet[], int inicio, int fim) //Função 'particiona' para o Quick Sort funcionar
+{
+    int esq;
+    int dir;
+    int pivo;
+    int troca;
+
+    esq = inicio;
+    dir = fim;
+    pivo = vet[inicio];
+
+    while(esq < dir)
+    {
+        while(vet[esq] <= pivo)
+        {
+            esq++; //avança a posição para a esquerda
+        }
+        while(vet[dir] > pivo)
+        {
+            dir--; //avança a posição para a direita
+        }
+        if(esq < dir) // troca esq e dir
+        {
+            troca =  vet[esq];
+            vet[esq] = vet[dir];
+            vet[dir] = troca;
+        }
+
+    }
+    vet[inicio] = vet[dir];
+    vet[dir] = pivo;
+    return dir;
+}
