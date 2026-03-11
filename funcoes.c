@@ -107,6 +107,34 @@ void insertionSort(int vet[], int tam) //Função de ordenação Insertion Sort
     }
 }
 
+void selectionSort(int vet[], int tam)//Função de ordenação Selection Sort
+{
+    int i;
+    int j;
+    int minimo;
+    int troca;
+
+    for(i = 0; i < tam - 1; i++)
+    {
+        minimo = i;
+        for(j = i + 1; j < tam; j++)
+        {
+            if(vet[j] < vet[minimo])
+            {
+                minimo = j;
+            }
+        }
+        if(minimo != i)
+        {
+            troca = vet[i];
+            vet[i] = vet[minimo];
+            vet[minimo] = troca;
+        }
+    }
+
+
+}
+
 void mergeSort(int vet[], int inicio, int fim) //Função de ordenação Merge Sort
 {
     if (inicio < fim)
