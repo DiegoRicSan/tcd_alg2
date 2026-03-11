@@ -95,14 +95,12 @@ void bubbleSort(int vet[], int tam) //Função de ordenação Bubble Sort
 {
 
     int troca;
-    int n;
-    n = vet[tam];
     int i;
     int j;
 
-    for(i = 0; i < n; i++)
+    for(i = 0; i < tam - 1; i++)
     {
-        for(j = 0; j < n - i -1; j++)
+        for(j = 0; j < tam - i - 1; j++)
         {
             if(vet[j] > vet[j + 1])
             {
@@ -236,14 +234,16 @@ int particiona(int vet[], int inicio, int fim) //Função 'particiona' para o Qu
 
     while(esq < dir)
     {
-        while(vet[esq] <= pivo)
+        while(esq <= fim && vet[esq] <= pivo)
         {
-            esq++; //avança a posição para a esquerda
+            esq++;
         }
-        while(vet[dir] > pivo)
+
+        while(dir >= inicio && vet[dir] > pivo)
         {
-            dir--; //avança a posição para a direita
+            dir--;
         }
+        
         if(esq < dir) // troca esq e dir
         {
             troca =  vet[esq];
@@ -255,4 +255,16 @@ int particiona(int vet[], int inicio, int fim) //Função 'particiona' para o Qu
     vet[inicio] = vet[dir];
     vet[dir] = pivo;
     return dir;
+}
+
+int verificaOrdenacao(int vetor[], int count)
+{
+    for (int i = 0; i < count; i++)
+    {
+        if (vetor[i] > vetor[i+1])
+        {
+            return -1;
+        }
+    }
+    return 0;
 }

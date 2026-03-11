@@ -3,3 +3,4 @@ funcoesexemplo.c
 arquivos/
 *.txt
 !log.txt
+main2.c

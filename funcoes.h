@@ -8,3 +8,4 @@ void mergeSort(int vet[], int inicio, int fim);
 void merge(int vet[], int inicio, int meio, int fim);
 void quickSort(int vet[], int inicio, int fim);
 int particiona(int vet[], int inicio, int fim);
+int verificaOrdenacao(int vetor[], int tamanho);
