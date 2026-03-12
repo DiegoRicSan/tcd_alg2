@@ -1,79 +1,89 @@
-Sistema de Busca e Ordenação em Arquivos
+# Sistema de Busca e Ordenação
 
-#Descrição
+## Descrição do programa
 
-Este programa foi desenvolvido em linguagem C com o objetivo de trabalhar com algoritmos de ordenação e busca em arquivos de números inteiros.
+Este programa foi desenvolvido em linguagem **C** com o objetivo de testar e comparar o desempenho de diferentes **algoritmos de ordenação e busca**.
 
-O sistema permite carregar um arquivo com dados, ordenar esses números utilizando diferentes algoritmos e realizar buscas dentro do conjunto de dados. Além disso, o programa mede o **tempo de execução das operações**, permitindo comparar o desempenho entre os algoritmos.
+O sistema permite carregar arquivos contendo números inteiros, realizar ordenações utilizando diferentes algoritmos e executar buscas dentro do vetor de dados. Durante a execução, o programa também mede o **tempo de execução das operações**, permitindo analisar o desempenho de cada algoritmo.
 
-Os tempos são medidos utilizando funções de alta precisão do sistema, o que permite observar diferenças de desempenho entre os métodos de ordenação e busca.
+Os testes são realizados executando os algoritmos várias vezes e calculando a média dos tempos obtidos.
 
-#Funcionalidades do programa
+---
 
-O programa possui um menu com algumas opções principais:
+## Funcionalidades
 
-1. Carregar arquivo de dados
+O programa possui um menu com as seguintes opções:
 
-Permite carregar um arquivo `.txt` contendo números inteiros.
-Esses números são armazenados em um vetor que será utilizado nas operações de busca e ordenação.
+1. **Carregar arquivo de dados**
+   Permite carregar um arquivo `.txt` contendo números inteiros para um vetor.
 
-2. Buscar elemento
+2. **Buscar elemento**
+   Permite procurar um valor no vetor utilizando:
 
-Permite procurar um número dentro do vetor utilizando dois tipos de busca:
+   * Busca Linear
+   * Busca Binária
 
-* Busca Linear
-* Busca Binária (necessita que os dados estejam ordenados)
+3. **Ordenar dados**
+   Permite ordenar os valores utilizando diferentes algoritmos de ordenação, como:
 
-O programa também mede o tempo que a busca leva para ser executada.
+   * Bubble Sort
+   * Insertion Sort
+   * Selection Sort
+   * Merge Sort
+   * Quick Sort
+   * IntroSort (extra)
 
-3. Ordenar dados
+4. **Gerar relatório**
+   O programa pode gerar um relatório contendo os tempos médios de execução dos algoritmos testados.
 
-Permite ordenar os números utilizando diferentes algoritmos de ordenação, como:
+5. **Sair**
+   Encerra a execução do programa.
 
-* Bubble Sort
-* Insertion Sort
-* Selection Sort
-* Merge Sort
-* Quick Sort
-* IntroSort (implementação extra)
+---
 
-Após a execução, o tempo de execução do algoritmo é exibido.
+## Compilação
 
-4. Gerar relatório
+Para compilar o programa utilizando **linha de comando**, utilize o compilador GCC.
 
-O programa também pode gerar um relatório com as médias de tempo das execuções realizadas.
-Esse relatório é salvo automaticamente em um arquivo separado.
+No terminal ou prompt de comando, execute:
 
-5. Sair
-
-Encerra a execução do programa.
-
-#Compilação
-
-Para compilar o programa utilizando GCC:
-
+```bash
 gcc main.c funcoes.c -o programa
+```
 
-#Execução
+Esse comando compila os arquivos do projeto e gera o executável chamado **programa**.
 
-Após compilar, o programa pode ser executado com:
+---
 
+## Execução
+
+Após a compilação, o programa pode ser executado com o seguinte comando:
+
+No Windows:
+
+```bash
 programa.exe
+```
 
-ou
+No Linux:
 
+```bash
 ./programa
+```
 
-#Arquivos do projeto
+---
 
-O projeto é composto pelos seguintes arquivos principais:
+## Arquivos do projeto
 
-* `main.c` -> arquivo principal do programa
-* `funcoes.c` -> implementação das funções de busca e ordenação
-* `funcoes.h` -> declaração das funções utilizadas
-* arquivos `.txt` com os dados de teste
+O projeto é composto pelos seguintes arquivos:
 
-#Observação
+* `main.c` – arquivo principal do programa
+* `funcoes.c` – implementação das funções de ordenação e busca
+* `funcoes.h` – declaração das funções utilizadas
+* arquivos `.txt` contendo os dados utilizados nos testes
 
-Para utilizar busca binária, os dados precisam estar previamente ordenados.
+---
 
+## Observação
+
+Para utilizar a **busca binária**, os dados precisam estar previamente ordenados.
