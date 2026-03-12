@@ -1,0 +1,13 @@
+===MEDIAS DE 100 EXECUCOES===
+Nome do arquivo: desordenado_10000.txt
+Tamanho do arquivo: 10000
+Buscas: 
+Linear: 0.006216000 ms
+Binaria: 0.000169000 ms
+Ordenacoes: 
+Bubble Sort: 101.303997000 ms
+Insertion Sort: 36.589621000 ms
+Selection Sort: 54.070562000 ms
+Merge Sort: 0.950731000 ms
+Quick Sort: 0.740228000 ms
+IntroSort (EXTRA): 0.543278000 ms
