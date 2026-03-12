@@ -48,10 +48,14 @@ Para compilar o programa utilizando **linha de comando**, utilize o compilador G
 No terminal ou prompt de comando, execute:
 
 ```bash
-gcc main.c funcoes.c -o programa
+gcc -O2 -o programa main.c funcoes.c -lm
 ```
 
-Esse comando compila os arquivos do projeto e gera o executável chamado **programa**.
+A opção **-O2** ativa otimizações do compilador, o que melhora o desempenho do programa durante a execução dos algoritmos.
+
+A opção **-lm** inclui a biblioteca matemática, utilizada em algumas funções como `log2`.
+
+Também é possível utilizar **-O3**, que aplica otimizações mais agressivas, porém em alguns casos **-O2 apresenta maior estabilidade**.
 
 ---
 
@@ -64,14 +68,6 @@ No Windows:
 ```bash
 programa.exe
 ```
-
-No Linux:
-
-```bash
-./programa
-```
-
----
 
 ## Arquivos do projeto
 
