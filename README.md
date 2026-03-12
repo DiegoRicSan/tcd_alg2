@@ -8,6 +8,7 @@ O sistema permite carregar arquivos contendo números inteiros, realizar ordena�
 
 Os testes são realizados executando os algoritmos várias vezes e calculando a média dos tempos obtidos.
 
+A escolha do algoritmo extra "introSort" foi feita por meio de uma pesquisa aprofundada sobre algoritmos de ordenação, juntado mais de um algoritmo sendo assim um algoritmo híbrido, e pelo fato dele ser um dos mais rápido dentre os pesquisados
 ---
 
 ## Funcionalidades
