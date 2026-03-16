@@ -79,7 +79,7 @@ O projeto é composto pelos seguintes arquivos:
 * `funcoes.h` – declaração das funções utilizadas
 * arquivos `.txt` contendo os dados utilizados nos testes
 
----
+----
 
 ## Observação
 
