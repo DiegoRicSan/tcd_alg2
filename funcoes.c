@@ -138,19 +138,19 @@ void selectionSort(int vet[], int tam) // Função de ordenação Selection Sort
     int minimo;
     int troca;
 
-    for (i = 0; i < tam - 1; i++)
+    for (i = 0; i < tam - 1; i++) // percorre o vetor da primeira posição até a penúltima
     {
-        minimo = i;
+        minimo = i; // assume que o menor elemento está na posição atual
 
         for (j = i + 1; j < tam; j++)
         {
-            if (vet[j] < vet[minimo])
+            if (vet[j] < vet[minimo]) // verifica se encontrou um valor menor
             {
                 minimo = j;
             }
         }
 
-        if (minimo != i)
+        if (minimo != i) // verifica se o menor elemento encontrado não está na posição correta
         {
             troca = vet[i];
             vet[i] = vet[minimo];
@@ -161,7 +161,7 @@ void selectionSort(int vet[], int tam) // Função de ordenação Selection Sort
 
 void mergeSort(int vet[], int inicio, int fim) // Função de ordenação Merge Sort
 {
-    if (inicio < fim)
+    if (inicio < fim) // verifica se ainda existem mais de um elemento para dividir
     {
         int meio;
 
@@ -179,27 +179,27 @@ void merge(int vet[], int inicio, int meio, int fim) // Função Merge do Algori
     int j;
     int k;
 
-    i = inicio;
-    j = meio + 1;
-    k = 0;
+    i = inicio; // começa do início da metade esquerda
+    j = meio + 1; // começa do início da metade direitar
+    k = 0; // posição inicial do vetor temporário
 
-    int temp[fim - inicio + 1];
+    int temp[fim - inicio + 1]; // vetor temporário que armazenará os elementos ordenados
 
-    while (i <= meio && j <= fim)
+    while (i <= meio && j <= fim) // enquanto houver elementos nas duas metade
     {
-        if (vet[i] <= vet[j])
+        if (vet[i] <= vet[j]) 
         {
-            temp[k++] = vet[i++];
+            temp[k++] = vet[i++]; // copia o menor elemento da esquerda para o vetor temporário
         }
         else
         {
-            temp[k++] = vet[j++];
+            temp[k++] = vet[j++]; // copia o menor elemento da direita para o vetor temporário
         }
     }
 
-    while (i <= meio)
+    while (i <= meio) // se ainda restarem elementos na metade esquerda
     {
-        temp[k++] = vet[i++];
+        temp[k++] = vet[i++]; // copia os elementos restantes da esquerda
     }
 
     while (j <= fim)
@@ -207,9 +207,9 @@ void merge(int vet[], int inicio, int meio, int fim) // Função Merge do Algori
         temp[k++] = vet[j++];
     }
 
-    for (i = inicio, k = 0; i <= fim; i++, k++)
+    for (i = inicio, k = 0; i <= fim; i++, k++) // percorre o trecho original do vetor
     {
-        vet[i] = temp[k];
+        vet[i] = temp[k]; // copia os valores ordenados do vetor temporário para o vetor original
     }
 }
 
@@ -310,13 +310,13 @@ void criaHeap(int vet[], int tam, int i) // essa função garante que heap sort 
     int direita = 2 * i + 2;
     int troca;
 
-    if (esquerda < tam && vet[esquerda] > vet[maior])
-        maior = esquerda;
+    if (esquerda < tam && vet[esquerda] > vet[maior]) // verifica se o filho esquerdo existe e é maior que o pai
+        maior = esquerda; // se for maior, atualiza o índice do maior elemento
 
-    if (direita < tam && vet[direita] > vet[maior])
+    if (direita < tam && vet[direita] > vet[maior]) 
         maior = direita;
 
-    if (maior != i)
+    if (maior != i) // verifica se algum filho é maior que o pai
     {
         troca = vet[i];
         vet[i] = vet[maior];
@@ -330,10 +330,10 @@ void heapSort(int vet[], int tam) // Função de ordenação Heap Sort, utilizad
 {
     int troca;
 
-    for (int i = tam / 2 - 1; i >= 0; i--)
+    for (int i = tam / 2 - 1; i >= 0; i--)  // começa do último nó que tem filhos até a raiz
         criaHeap(vet, tam, i);
 
-    for (int i = tam - 1; i > 0; i--)
+    for (int i = tam - 1; i > 0; i--) // percorre o vetor do final para o início
     {
         troca = vet[0];
         vet[0] = vet[i];
@@ -345,7 +345,7 @@ void heapSort(int vet[], int tam) // Função de ordenação Heap Sort, utilizad
 
 void introsortAux(int vet[], int inicio, int fim, int depthlimit) // função auxiliar do introsort
 {
-    int tamanho = fim - inicio + 1;
+    int tamanho = fim - inicio + 1; // calcula o tamanho do trecho do vetor que está sendo ordenado
 
     if (tamanho < 24)
     {
@@ -354,7 +354,7 @@ void introsortAux(int vet[], int inicio, int fim, int depthlimit) // função au
         return;
     }
 
-    if (depthlimit == 0)
+    if (depthlimit == 0) // verifica se atingiu o limite máximo de recursão
     {
         heapSort(vet + inicio, tamanho);
         return;
@@ -362,8 +362,8 @@ void introsortAux(int vet[], int inicio, int fim, int depthlimit) // função au
 
     int p = particiona(vet, inicio, fim);
 
-    introsortAux(vet, inicio, p - 1, depthlimit - 1);
-    introsortAux(vet, p, fim, depthlimit - 1);
+    introsortAux(vet, inicio, p - 1, depthlimit - 1); // ordena recursivamente a parte esquerda do pivô
+    introsortAux(vet, p, fim, depthlimit - 1); // ordena recursivamente a parte direita do pivô
 }
 
 void introsort(int vet[], int tam) // função principal do Intro Sort
@@ -372,6 +372,7 @@ void introsort(int vet[], int tam) // função principal do Intro Sort
 
     introsortAux(vet, 0, tam - 1, depthlimit);
 }
+
 int lerInteiro(char *mensagem, int min, int max)
 {
     int valor;
