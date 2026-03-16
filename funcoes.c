@@ -52,7 +52,6 @@ int buscaLinear(int *lista, int chave, int tam)
             return i;
         }
     }
-
     // Se terminou o laço e não encontrou a chave,
     // retorna -1 indicando que o elemento não existe no vetor
     return -1;
